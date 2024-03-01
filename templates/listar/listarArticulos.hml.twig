@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello ArticulosController!{% endblock %}
+{% block body %}
+<h1>Listado de Articulos</h1>
+<table border=”1”>
+    <tr>
+        <th>Titulo</th>
+    </tr>
+    {% if array_articulos is defined and array_articulos is iterable %}
+        {% for articulo in array_articulos %}
+            <tr>
+                <td><a href="{{ path('articulosById', {id: articulo.id}) }}">{{articulo.title}}</a></td>
+            </tr>
+        {% endfor %}
+    {% elseif articulo != null %}
+            <tr>
+               <td><a href="{{ path('articulosById', {id: articulo.id}) }}">{{articulo.title}}</a></td>
+            </tr>
+    {% else %}
+        <h2>El producto solicitado no existe.</h2>
+    {% endif %}
+    
+</table>
+{% endblock %}
