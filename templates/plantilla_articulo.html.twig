@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Plantilla {% endblock %}
+
+
+{% block head %}
+
+<h3>Esto es el header: Incluyendo imagen mediante la función asset()</h3>
+<img src="{{ asset('imgs/symfony.png') }}" width="400" height="100"> <!-- La función asset apunta a la carpeta "public/" -->
+
+<hr>
+<div>
+    <h3>Esto es el header: Incluyendo imagen mediante include:</h3>
+    {% include 'mostrar_imagen.html.twig' %}
+</div>
+
+
+<hr>
+<div>
+    <h3>Esto es el header: Incluyendo imagen mediante include y parametro:</h3>
+    {% include 'mostrar_imagen_parametro.html.twig' with {'nombre_imagen': 'level-up.png'} %}
+</div>
+{% endblock %}
+
+
+
+{% block body %}
+
+   <hr>
+   <h3>Esto es Body</h3>
+   <h3>Datos del artículo obtenida por parametro, colocando el nombre en mayusculas</h3>
+    {% block content %}
+        
+    {% endblock %}
+
+{% endblock %}
+
+
+{% block footer %}
+    <hr>
+    <h3>Esto es el footer:</h3>
+    <p>Fecha Actual</p>
+    {{ "now"|date("m/d/Y") }}
+{% endblock %}

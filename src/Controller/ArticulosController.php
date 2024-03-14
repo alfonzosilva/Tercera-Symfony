@@ -11,14 +11,14 @@ class ArticulosController extends AbstractController
     #[Route('/articulos', name: 'app_articulos')]
     public function index(): Response {
         $array_articulos = $this->getDatos();
-        return $this->render('articulos/index.html.twig', compact('array_articulos'));
+        return $this->render('plantilla_articulo.html.twig', compact('array_articulos'));
     }
 
     #[Route('/articulos/{id}', name: 'articulosById')]
     public function articulosById(string $id): Response {
         foreach ($this->getDatos() as $articulo) {
             if (strcmp($id, $articulo['id']) == 0) {
-                return $this->render('articulos/index.html.twig', compact('articulo'));
+                return $this->render('mostrar_articulo.html.twig', compact('articulo'));
             }
         }
         $articulo = null;

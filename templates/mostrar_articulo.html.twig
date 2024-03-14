@@ -1,0 +1,13 @@
+{% extends 'plantilla_articulo.html.twig' %}
+
+{% block content %}
+
+    {% if articulo != null %}
+            <tr>
+                <td>{{articulo.id}}</td>
+                <td>{{articulo.title|upper}}</td>
+                <td>{{articulo.created}}</td>
+            </tr>
+    {% endif %}
+
+{% endblock %}
